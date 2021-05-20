@@ -1,0 +1,22 @@
+.home {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 4rem 0;
+  width: 100%;
+  background: rgba(156, 155, 155, 0.205);
+
+  &__heading {
+    font-size: 3rem;
+    text-transform: uppercase;
+    letter-spacing: 0.3rem;
+    color: grey;
+  }
+
+  & .error {
+    color: red;
+    margin-top: 2rem;
+    font-size: 1.5rem;
+  }
+}

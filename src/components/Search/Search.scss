@@ -1,0 +1,29 @@
+.search {
+  display: flex;
+  width: 40%;
+  margin-top: 2rem;
+
+  @media only screen and (max-width: 768px) {
+    width: 70%;
+  }
+
+  & input {
+    width: 100%;
+    padding-left: 1.3rem;
+  }
+
+  & input:focus {
+    outline: none;
+    border: 1px solid rgb(162, 221, 162);
+  }
+
+  & button {
+    background: blue;
+    padding: 1.1rem 1.8rem;
+    font-weight: 700;
+    font-size: 1.2rem;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+  }
+}
