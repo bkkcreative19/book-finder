@@ -12,8 +12,10 @@ const Home = () => {
   const [error, setError] = useState("");
 
   const searchBooks = async (e) => {
-    setLoading(true);
     e.preventDefault();
+
+    setLoading(true);
+
     setBooks([]);
 
     try {
