@@ -1,25 +1,40 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import { Header } from "./components/Header/Header";
+import axios from "axios";
+import "./App.scss";
+import { Booklist } from "./components/Booklist/Booklist";
+import { Loader } from "./components/Loader/Loader";
 
-function App() {
+export const App = () => {
+  const [input, setInput] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [books, setBooks] = useState(null);
+  const [error, setError] = useState(null);
+
+  const searchBooks = async () => {
+    setLoading(true);
+
+    setBooks([]);
+
+    try {
+      const apiUrl = `https://www.googleapis.com/books/v1/volumes?q=${input}&key=${process.env.REACT_APP_API_KEY}`;
+
+      const { data } = await axios.get(apiUrl);
+
+      setLoading(false);
+
+      setBooks(data.items);
+    } catch (error) {
+      console.log(error);
+      setError(error.message);
+    }
+    setInput("");
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Header input={input} fetchData={searchBooks} setInput={setInput} />
+      {loading ? <Loader /> : <Booklist books={books} />}
+    </>
   );
-}
-
-export default App;
+};

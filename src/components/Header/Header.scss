@@ -1,0 +1,12 @@
+.header {
+  text-align: center;
+  padding: 4rem 0;
+
+  &__text {
+    font-size: 4rem;
+    text-transform: uppercase;
+    letter-spacing: 0.7rem;
+    color: grey;
+    font-weight: 600;
+  }
+}
