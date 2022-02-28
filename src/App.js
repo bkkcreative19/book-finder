@@ -9,7 +9,6 @@ export const App = () => {
   const [input, setInput] = useState("");
   const [loading, setLoading] = useState(false);
   const [books, setBooks] = useState(null);
-  const [error, setError] = useState(null);
 
   const searchBooks = async () => {
     setLoading(true);
@@ -24,10 +23,7 @@ export const App = () => {
       setLoading(false);
 
       setBooks(data.items);
-    } catch (error) {
-      console.log(error);
-      setError(error.message);
-    }
+    } catch (err) {}
     setInput("");
   };
 
